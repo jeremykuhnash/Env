@@ -1,0 +1,18 @@
+[submodule "oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = git@github.com:robbyrussell/oh-my-zsh.git
+[submodule "the-one-theme"]
+	path = the-one-theme
+	url = git@github.com:benniemosher/the-one-theme.git
+[submodule "spaceship-zsh-theme"]
+	path = zsh/spaceship-zsh-theme
+	url = git@github.com:denysdovhan/spaceship-zsh-theme.git
+[submodule "config/nvim/pack/clojure/start/vim-fireplace"]
+	path = config/nvim/pack/clojure/start/vim-fireplace
+	url = git@github.com:tpope/vim-fireplace.git
+[submodule "config/nvim/pack/syntax/start/vim-polyglot"]
+	path = config/nvim/pack/syntax/start/vim-polyglot
+	url = git@github.com:sheerun/vim-polyglot.git
+[submodule "config/nvim/pack/themes/opt/onedark.vim"]
+	path = config/nvim/pack/themes/opt/onedark.vim
+	url = git@github.com:joshdick/onedark.vim.git

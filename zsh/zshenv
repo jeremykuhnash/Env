@@ -1,0 +1,4 @@
+export PATH="$HOME/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/Env/config"
+export XDG_DATA_HOME="$HOME/Env/local/share"
+export XDG_CACHE_HOME="$HOME/Env/cache"
