@@ -9,6 +9,12 @@ set wildmenu
 set nohlsearch
 
 " navigation
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 tnoremap <esc> <c-\><c-n>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -35,3 +41,6 @@ inoremap [ []<esc>i
 inoremap " ""<esc>i
 vnoremap ( <esc>`>a)<esc>`<i(<esc>
 vnoremap ) <esc>`>a)<esc>`<i(<esc>
+
+" clojure
+source ~/Env/config/nvim/clojure.vim

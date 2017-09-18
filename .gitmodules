@@ -8,7 +8,7 @@
 	path = zsh/spaceship-zsh-theme
 	url = git@github.com:denysdovhan/spaceship-zsh-theme.git
 [submodule "config/nvim/pack/clojure/start/vim-fireplace"]
-	path = config/nvim/pack/clojure/start/vim-fireplace
+	path = config/nvim/pack/clojure/opt/vim-fireplace
 	url = git@github.com:tpope/vim-fireplace.git
 [submodule "config/nvim/pack/syntax/start/vim-polyglot"]
 	path = config/nvim/pack/syntax/start/vim-polyglot
@@ -16,3 +16,6 @@
 [submodule "config/nvim/pack/themes/opt/onedark.vim"]
 	path = config/nvim/pack/themes/opt/onedark.vim
 	url = git@github.com:joshdick/onedark.vim.git
+[submodule "Office-Code-Pro"]
+	path = Office-Code-Pro
+	url = git@github.com:nathco/Office-Code-Pro.git
