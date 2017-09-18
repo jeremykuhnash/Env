@@ -1,15 +1,24 @@
 let mapleader = " "
+let maplocalleader = ","
+set hidden
 
-" Reload init.vim
-nnoremap <leader>r :source ~/Env/config/nvim/init.vim<cr>
+" init.vim
+nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <leader>ve :edit $MYVIMRC<cr>
+inoremap jk <esc>
+inoremap <esc> <nop>
 
 " finding
 set path+=**
 set wildmenu
 set nohlsearch
 
+" LVSTHW
+noremap - ddp
+noremap _ ddkP
+inoremap <leader>U <esc>viwUea
+
 " navigation
-let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
@@ -41,6 +50,12 @@ inoremap [ []<esc>i
 inoremap " ""<esc>i
 vnoremap ( <esc>`>a)<esc>`<i(<esc>
 vnoremap ) <esc>`>a)<esc>`<i(<esc>
+vnoremap [ <esc>`>a]<esc>`<i[<esc>
+vnoremap ] <esc>`>a]<esc>`<i[<esc>
+vnoremap < <esc>`>a><esc>`<i<<esc>
+vnoremap > <esc>`>a><esc>`<i[<esc>
+vnoremap " <esc>`>a"<esc>`<i"<esc>
+vnoremap ' <esc>`>a'<esc>`<i'<esc>
 
 " clojure
 source ~/Env/config/nvim/clojure.vim
