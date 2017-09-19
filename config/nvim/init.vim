@@ -12,16 +12,10 @@ set wildmenu
 set nohlsearch
 
 " LVSTHW
-noremap - ddp
-noremap _ ddkP
+nnoremap - ddp
+nnoremap _ ddkP
 
-" navigation
-nnoremap <leader>pt :NERDTreeToggle<cr>
-tnoremap <esc> <c-\><c-n>
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
+source ~/Env/config/nvim/navigation.vim
 
 " colors
 autocmd VimEnter * source ~/Env/config/nvim/theme.vim
@@ -47,4 +41,3 @@ vnoremap < <esc>`>a><esc>`<i<<esc>
 vnoremap > <esc>`>a><esc>`<i[<esc>
 vnoremap " <esc>`>a"<esc>`<i"<esc>
 vnoremap ' <esc>`>a'<esc>`<i'<esc>
-

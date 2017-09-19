@@ -22,3 +22,6 @@
 [submodule "config/nvim/pack/navigation/start/nerdtree"]
 	path = config/nvim/pack/navigation/start/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
+[submodule "config/nvim/pack/navigation/start/fzf.vim"]
+	path = config/nvim/pack/navigation/start/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
