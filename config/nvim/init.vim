@@ -1,10 +1,18 @@
 let mapleader = " "
 let maplocalleader = ","
-set hidden
+
+source ~/Env/config/nvim/navigation.vim
+source ~/Env/config/nvim/clojure.vim
+autocmd VimEnter * source ~/Env/config/nvim/theme.vim
 
 " init.vim
 nnoremap <leader>vs :source $MYVIMRC<cr>
 nnoremap <leader>ve :edit $MYVIMRC<cr>
+nnoremap <leader>vt :helptags ALL<cr>
+
+" editing
+autocmd BufEnter * EnableStripWhitespaceOnSave
+let g:sexp_filetypes = '*'
 
 " finding
 set path+=**
@@ -15,29 +23,7 @@ set nohlsearch
 nnoremap - ddp
 nnoremap _ ddkP
 
-source ~/Env/config/nvim/navigation.vim
-
-" colors
-autocmd VimEnter * source ~/Env/config/nvim/theme.vim
-
-" clojure
-source ~/Env/config/nvim/clojure.vim
-
-" on save, undo history, etc
-autocmd BufWritePre * silent! :%s/\s\+$//g
+" undo history, etc
+set hidden
 set undofile
 set undodir=~/.vim/undo
-
-" brackets
-inoremap ( ()<esc>i
-inoremap { {}<esc>i
-inoremap [ []<esc>i
-inoremap " ""<esc>i
-vnoremap ( <esc>`>a)<esc>`<i(<esc>
-vnoremap ) <esc>`>a)<esc>`<i(<esc>
-vnoremap [ <esc>`>a]<esc>`<i[<esc>
-vnoremap ] <esc>`>a]<esc>`<i[<esc>
-vnoremap < <esc>`>a><esc>`<i<<esc>
-vnoremap > <esc>`>a><esc>`<i[<esc>
-vnoremap " <esc>`>a"<esc>`<i"<esc>
-vnoremap ' <esc>`>a'<esc>`<i'<esc>

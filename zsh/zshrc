@@ -117,3 +117,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias e="nvim"
 export EDITOR=nvim
+alias :e=nvim
