@@ -25,3 +25,9 @@
 [submodule "config/nvim/pack/navigation/start/fzf.vim"]
 	path = config/nvim/pack/navigation/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "config/nvim/pack/clojure/opt/async-clj-omni"]
+	path = config/nvim/pack/clojure/opt/async-clj-omni
+	url = git@github.com:clojure-vim/async-clj-omni.git
+[submodule "config/nvim/pack/navigation/start/nvim-completion-manager"]
+	path = config/nvim/pack/navigation/start/nvim-completion-manager
+	url = git@github.com:roxma/nvim-completion-manager.git
