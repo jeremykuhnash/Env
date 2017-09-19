@@ -19,3 +19,6 @@
 [submodule "Office-Code-Pro"]
 	path = Office-Code-Pro
 	url = git@github.com:nathco/Office-Code-Pro.git
+[submodule "config/nvim/pack/navigation/start/nerdtree"]
+	path = config/nvim/pack/navigation/start/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git

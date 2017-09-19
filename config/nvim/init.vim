@@ -5,8 +5,6 @@ set hidden
 " init.vim
 nnoremap <leader>vs :source $MYVIMRC<cr>
 nnoremap <leader>ve :edit $MYVIMRC<cr>
-inoremap jk <esc>
-inoremap <esc> <nop>
 
 " finding
 set path+=**
@@ -16,14 +14,9 @@ set nohlsearch
 " LVSTHW
 noremap - ddp
 noremap _ ddkP
-inoremap <leader>U <esc>viwUea
 
 " navigation
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+nnoremap <leader>pt :NERDTreeToggle<cr>
 tnoremap <esc> <c-\><c-n>
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -31,12 +24,10 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 " colors
-set termguicolors
-packadd onedark.vim
-colorscheme onedark
-highlight Normal ctermbg=NONE guibg=#2a2a2a
-highlight NonText ctermbg=NONE guibg=#2a2a2a
-highlight StatusLine ctermbg=NONE guibg=#2a2a2a
+autocmd VimEnter * source ~/Env/config/nvim/theme.vim
+
+" clojure
+source ~/Env/config/nvim/clojure.vim
 
 " on save, undo history, etc
 autocmd BufWritePre * silent! :%s/\s\+$//g
@@ -57,5 +48,3 @@ vnoremap > <esc>`>a><esc>`<i[<esc>
 vnoremap " <esc>`>a"<esc>`<i"<esc>
 vnoremap ' <esc>`>a'<esc>`<i'<esc>
 
-" clojure
-source ~/Env/config/nvim/clojure.vim
