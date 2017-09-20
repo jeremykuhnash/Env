@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec tmux new -A -s "$1" -c "$HOME/code/$1"

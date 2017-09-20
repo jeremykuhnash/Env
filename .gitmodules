@@ -40,3 +40,12 @@
 [submodule "config/nvim/pack/editing/start/vim-repeat"]
 	path = config/nvim/pack/editing/start/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
+[submodule "config/nvim/pack/editing/start/vim-fugitive"]
+	path = config/nvim/pack/editing/start/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "config/nvim/pack/editing/start/vim-rhubarb"]
+	path = config/nvim/pack/editing/start/vim-rhubarb
+	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "config/nvim/pack/clojure/opt/clj-refactor.nvim"]
+	path = config/nvim/pack/clojure/opt/clj-refactor.nvim
+	url = git@github.com:clojure-vim/clj-refactor.nvim.git
