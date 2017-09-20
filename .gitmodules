@@ -49,3 +49,6 @@
 [submodule "config/nvim/pack/clojure/opt/clj-refactor.nvim"]
 	path = config/nvim/pack/clojure/opt/clj-refactor.nvim
 	url = git@github.com:clojure-vim/clj-refactor.nvim.git
+[submodule "config/nvim/pack/nvim-hosts/start/node-host"]
+	path = config/nvim/pack/nvim-hosts/start/node-host
+	url = git@github.com:neovim/node-host.git
