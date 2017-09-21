@@ -4,4 +4,4 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gf :Ggrep<cr>
 nnoremap <leader>gl :Glog<cr>
-nnoremap <leader>gg :Gbrowse<cr>
+nnoremap <leader>gh :Gbrowse<cr>
