@@ -13,7 +13,7 @@ SPACESHIP_HOST_SHOW=false
 SPACESHIP_DIR_SHOW=true
 SPACESHIP_GIT_SHOW=true
 SPACESHIP_GIT_BRANCH_SHOW=true
-SPACESHIP_GIT_STATUS_SHOW=true
+SPACESHIP_GIT_STATUS_SHOW=false
 SPACESHIP_HG_SHOW=false
 SPACESHIP_HG_BRANCH_SHOW=false
 SPACESHIP_HG_STATUS_SHOW=false
@@ -83,7 +83,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh cp man lein brew osx jira github tmux vi-mode)
+plugins=(git zsh cp man lein brew osx jira github tmux vi-mode docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
