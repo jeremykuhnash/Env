@@ -319,9 +319,12 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-hl-line-mode -1) ; Disables current line highlight
-  (setq cljr-favor-prefix-notation nil)
-  (setq cider-words-of-inspiration
-        '("Balanced. Everything balanced. Life. Work. Parentheses. That's iconic and very homo... Wait, that came out wrong - Ag")))
+  (setq cljr-favor-prefix-notation nil
+        neo-theme 'nerd
+        cider-words-of-inspiration
+        '("Balanced. Everything balanced. Life. Work. Parentheses. That's iconic and very homo... Wait, that came out wrong - Ag")
+        dotspacemacs-frame-title-format "%a in %t"
+        vc-follow-symlinks nil))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
