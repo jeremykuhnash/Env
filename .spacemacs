@@ -30,32 +30,26 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
-     sql
-     markdown
-     yaml
-     clojure
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     helm
-     auto-completion
+   '(auto-completion
      better-defaults
+     clojure
      emacs-lisp
      git
      github
+     helm
+     javascript
+     markdown
      markdown
      org
      osx
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+     python
+     (shell :variables shell-default-height 30 shell-default-position 'bottom)
+     ruby
+     semantic
      spell-checking
+     sql
      syntax-checking
-     ;; version-control
-     )
+     yaml)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -116,7 +110,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'nil
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -132,13 +126,15 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark)
+   dotspacemacs-themes '(base16-ashes
+                         spacemacs-dark
+                         spacemacs-light
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Monaco"
                                :size 10
                                :weight normal
                                :width normal
@@ -306,9 +302,13 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (set-frame-parameter nil 'internal-border-width 30)
-  (set-frame-parameter (selected-frame) 'alpha '(100 . 25))
-  (add-to-list 'default-frame-alist '(alpha . (100 . 25)))
+  (setq spacemacs-buffer--warnings nil
+        initial-frame-alist '((top . 70) (left . 60)
+                              (width . 100) (height . 60)))
+  (set-frame-parameter nil 'internal-border-width 50)
+  ;(set-frame-parameter (selected-frame) 'alpha '(100 . 90))
+  ;(add-to-list 'default-frame-alist '(alpha . (100 . 90)))
+  (fringe-mode '(0 . 0))
 )
 
 (defun dotspacemacs/user-config ()
@@ -319,12 +319,29 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-hl-line-mode -1) ; Disables current line highlight
+  (define-key evil-normal-state-map (kbd ", l f") 'helm-semantic-or-imenu)
   (setq cljr-favor-prefix-notation nil
+        cljr-warn-on-eval nil
         neo-theme 'nerd
-        cider-words-of-inspiration
-        '("Balanced. Everything balanced. Life. Work. Parentheses. That's iconic and very homo... Wait, that came out wrong - Ag")
-        dotspacemacs-frame-title-format "%a in %t"
-        vc-follow-symlinks nil))
+        dotspacemacs-frame-title-format ""
+        vc-follow-symlinks nil
+        powerline-default-separator 'bar
+        )
+  (custom-theme-set-faces
+   'base16-ashes
+   `(fringe ((t (:background ,(plist-get base16-ashes-colors :base00))))))
+  (spacemacs/toggle-mode-line-off)
+  (spaceline-toggle-line-column-off)
+  (spaceline-toggle-line-off)
+  (spaceline-toggle-battery-off)
+  (spaceline-toggle-buffer-encoding-off)
+  (spaceline-toggle-buffer-encoding-abbrev-off)
+  (spaceline-toggle-buffer-size-off)
+  (spaceline-toggle-hud-off)
+  (spaceline-toggle-major-mode-off)
+  (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-purpose-off)
+  (spaceline-toggle-buffer-position-off))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -341,6 +358,13 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ (custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
  )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
@@ -352,9 +376,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (web-beautify livid-mode skewer-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc impatient-mode simple-httpd helm-gtags ggtags company-tern dash-functional tern coffee-mode add-node-modules-path mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (base16-theme mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
