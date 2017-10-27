@@ -43,7 +43,10 @@ values."
      org
      osx
      python
-     (shell :variables shell-default-height 30 shell-default-position 'bottom)
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-default-height 30
+            shel-default-position 'bottom)
      ruby
      semantic
      spell-checking
@@ -54,7 +57,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(doom-themes)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -126,7 +129,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(base16-ashes
+   dotspacemacs-themes '(doom-one-light
+                         doom-one
                          spacemacs-dark
                          spacemacs-light
                          )
@@ -134,11 +138,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco"
-                               :size 10
+   dotspacemacs-default-font '("Monospace"
+                               :size 11
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.3)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -169,7 +173,7 @@ values."
    dotspacemacs-retain-visual-state-on-shift t
    ;; If non-nil, J and K move lines up and down when in visual mode.
    ;; (default nil)
-   dotspacemacs-visual-line-move-text nil
+   dotspacemacs-visual-line-move-text t
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
@@ -303,12 +307,15 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq spacemacs-buffer--warnings nil
-        initial-frame-alist '((top . 70) (left . 60)
-                              (width . 100) (height . 60)))
+        doom-themes-enable-bold nil
+        doom-themes-enable-italic nil
+        initial-frame-alist '((top . 60) (left . 50)
+                              (width . 90) (height . 50)))
   (set-frame-parameter nil 'internal-border-width 50)
   ;(set-frame-parameter (selected-frame) 'alpha '(100 . 90))
   ;(add-to-list 'default-frame-alist '(alpha . (100 . 90)))
   (fringe-mode '(0 . 0))
+  (setq-default line-spacing 0.2)
 )
 
 (defun dotspacemacs/user-config ()
@@ -320,17 +327,17 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-hl-line-mode -1) ; Disables current line highlight
   (define-key evil-normal-state-map (kbd ", l f") 'helm-semantic-or-imenu)
+  (doom-themes-org-config)
   (setq cljr-favor-prefix-notation nil
         cljr-warn-on-eval nil
         neo-theme 'nerd
         dotspacemacs-frame-title-format ""
-        vc-follow-symlinks nil
-        powerline-default-separator 'bar
+        vc-follow-symlinks t
         )
-  (custom-theme-set-faces
-   'base16-ashes
-   `(fringe ((t (:background ,(plist-get base16-ashes-colors :base00))))))
-  (spacemacs/toggle-mode-line-off)
+  ; (custom-theme-set-faces
+  ;  'base16-ashes
+  ;  `(fringe ((t (:background ,(plist-get base16-ashes-colors :base00))))))
+  ;(spacemacs/toggle-mode-line-off)
   (spaceline-toggle-line-column-off)
   (spaceline-toggle-line-off)
   (spaceline-toggle-battery-off)
@@ -339,7 +346,9 @@ you should place your code here."
   (spaceline-toggle-buffer-size-off)
   (spaceline-toggle-hud-off)
   (spaceline-toggle-major-mode-off)
+  (spaceline-highlight-face-evil-state)
   (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-version-control-off)
   (spaceline-toggle-purpose-off)
   (spaceline-toggle-buffer-position-off))
 
@@ -358,13 +367,7 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-
+ '(font-lock-keyword-face ((t :family "Script12 BT")))
  )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
@@ -376,10 +379,47 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#f0f0f0" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#1b2229"])
+ '(custom-safe-themes
+   (quote
+    ("5900bec889f57284356b8216a68580bfa6ece73a6767dfd60196e56d050619bc" default)))
  '(evil-want-Y-yank-to-eol nil)
+ '(fci-rule-color "#383a42" t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
+ '(org-fontify-done-headline t)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-fontify-whole-heading-line t)
  '(package-selected-packages
    (quote
-    (base16-theme mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (doom-themes all-the-icons memoize font-lock+ mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(tramp-syntax (quote default) nil (tramp))
+ '(vc-annotate-background "#f0f0f0")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#50a14f")
+    (cons 40 "#688e35")
+    (cons 60 "#807b1b")
+    (cons 80 "#986801")
+    (cons 100 "#ae7118")
+    (cons 120 "#c37b30")
+    (cons 140 "#da8548")
+    (cons 160 "#c86566")
+    (cons 180 "#b74585")
+    (cons 200 "#a626a4")
+    (cons 220 "#ba3685")
+    (cons 240 "#cf4667")
+    (cons 260 "#e45649")
+    (cons 280 "#d2685f")
+    (cons 300 "#c07b76")
+    (cons 320 "#ae8d8d")
+    (cons 340 "#383a42")
+    (cons 360 "#383a42")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
