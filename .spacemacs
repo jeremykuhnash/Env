@@ -113,7 +113,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner '2
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -129,8 +129,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-one-light
-                         doom-one
+   dotspacemacs-themes '(doom-one
+                         doom-one-light
                          spacemacs-dark
                          spacemacs-light
                          )
@@ -138,11 +138,12 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
+   ;; Monospace Medium: http://www.1001fonts.com/monospaced+typewriter-fonts.html?page=2&items=10
    dotspacemacs-default-font '("Monospace"
                                :size 11
-                               :weight normal
+                               :weight bold
                                :width normal
-                               :powerline-scale 1.3)
+                               :powerline-scale 1.4)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -307,10 +308,10 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq spacemacs-buffer--warnings nil
-        doom-themes-enable-bold nil
-        doom-themes-enable-italic nil
+        doom-themes-enable-bold t
+        doom-themes-enable-italic t
         initial-frame-alist '((top . 60) (left . 50)
-                              (width . 90) (height . 50)))
+                              (width . 90) (height . 60)))
   (set-frame-parameter nil 'internal-border-width 50)
   ;(set-frame-parameter (selected-frame) 'alpha '(100 . 90))
   ;(add-to-list 'default-frame-alist '(alpha . (100 . 90)))
@@ -329,9 +330,10 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd ", l f") 'helm-semantic-or-imenu)
   (doom-themes-org-config)
   (setq cljr-favor-prefix-notation nil
+        clojure-enable-fancify-symbols t
         cljr-warn-on-eval nil
         neo-theme 'nerd
-        dotspacemacs-frame-title-format ""
+        dotspacemacs-frame-title-format "%t > %a"
         vc-follow-symlinks t
         )
   ; (custom-theme-set-faces
@@ -396,8 +398,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-fontify-whole-heading-line t)
  '(package-selected-packages
    (quote
-    (doom-themes all-the-icons memoize font-lock+ mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(tramp-syntax (quote default) nil (tramp))
+    (rspec-mode osx-dictionary flycheck ht alert magit doom-themes all-the-icons memoize font-lock+ mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(vc-annotate-background "#f0f0f0")
  '(vc-annotate-color-map
    (list
@@ -425,5 +426,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-keyword-face ((t :family "Script12 BT"))))
 )
