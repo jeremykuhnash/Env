@@ -31,11 +31,16 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(auto-completion
+     (haskell :variables
+              haskell-completion-backend 'intero
+              ;haskell-process-log t
+              )
      better-defaults
      clojure
      emacs-lisp
      git
      github
+     haskell
      helm
      javascript
      markdown
@@ -310,13 +315,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq spacemacs-buffer--warnings nil
         doom-themes-enable-bold t
         doom-themes-enable-italic t
-        initial-frame-alist '((top . 60) (left . 50)
-                              (width . 90) (height . 60)))
-  (set-frame-parameter nil 'internal-border-width 50)
-  ;(set-frame-parameter (selected-frame) 'alpha '(100 . 90))
-  ;(add-to-list 'default-frame-alist '(alpha . (100 . 90)))
+        default-frame-alist '((top . 60) (left . 50)
+                              (width . 90) (height . 60)
+                              (internal-border-width . 30)))
   (fringe-mode '(0 . 0))
-  (setq-default line-spacing 0.2)
+  (setq-default line-spacing 0.2
+                left-margin-width 5
+                right-margin-width 5)
 )
 
 (defun dotspacemacs/user-config ()
@@ -329,16 +334,16 @@ you should place your code here."
   (global-hl-line-mode -1) ; Disables current line highlight
   (define-key evil-normal-state-map (kbd ", l f") 'helm-semantic-or-imenu)
   (doom-themes-org-config)
+  (spacemacs/toggle-centered-buffer-mode)
   (setq cljr-favor-prefix-notation nil
-        clojure-enable-fancify-symbols t
+        clojure-enable-fancify-symbols nil
         cljr-warn-on-eval nil
         neo-theme 'nerd
         dotspacemacs-frame-title-format "%t > %a"
         vc-follow-symlinks t
+        powerline-default-separator nil
         )
-  ; (custom-theme-set-faces
-  ;  'base16-ashes
-  ;  `(fringe ((t (:background ,(plist-get base16-ashes-colors :base00))))))
+  (scroll-bar-mode -1)
   ;(spacemacs/toggle-mode-line-off)
   (spaceline-toggle-line-column-off)
   (spaceline-toggle-line-off)
@@ -364,13 +369,7 @@ you should place your code here."
  '(package-selected-packages
    (quote
     (mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(font-lock-keyword-face ((t :family "Script12 BT")))
- )
+
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -381,50 +380,14 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#f0f0f0" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#1b2229"])
- '(custom-safe-themes
-   (quote
-    ("5900bec889f57284356b8216a68580bfa6ece73a6767dfd60196e56d050619bc" default)))
- '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#383a42" t)
- '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
- '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
- '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
- '(org-fontify-done-headline t)
- '(org-fontify-quote-and-verse-blocks t)
- '(org-fontify-whole-heading-line t)
  '(package-selected-packages
    (quote
-    (rspec-mode osx-dictionary flycheck ht alert magit doom-themes all-the-icons memoize font-lock+ mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(vc-annotate-background "#f0f0f0")
- '(vc-annotate-color-map
-   (list
-    (cons 20 "#50a14f")
-    (cons 40 "#688e35")
-    (cons 60 "#807b1b")
-    (cons 80 "#986801")
-    (cons 100 "#ae7118")
-    (cons 120 "#c37b30")
-    (cons 140 "#da8548")
-    (cons 160 "#c86566")
-    (cons 180 "#b74585")
-    (cons 200 "#a626a4")
-    (cons 220 "#ba3685")
-    (cons 240 "#cf4667")
-    (cons 260 "#e45649")
-    (cons 280 "#d2685f")
-    (cons 300 "#c07b76")
-    (cons 320 "#ae8d8d")
-    (cons 340 "#383a42")
-    (cons 360 "#383a42")))
- '(vc-annotate-very-old-color nil))
+    (yapfify xterm-color web-beautify unfill symon string-inflection stickyfunc-enhance srefactor sql-indent smeargle shell-pop sayid rvm ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe reveal-in-osx-finder rbenv rake pyvenv pytest pyenv-mode py-isort pip-requirements pbcopy password-generator osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download org-brain mwim multi-term minitest magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode launchctl json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc intero hy-mode htmlize hlint-refactor hindent helm-pydoc helm-purpose window-purpose imenu-list helm-hoogle helm-gitignore helm-company helm-c-yasnippet haskell-snippets gnuplot gitignore-mode github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache ht fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck-haskell evil-org evil-magit magit magit-popup git-commit with-editor evil-lion eshell-z eshell-prompt-extras esh-help editorconfig doom-themes all-the-icons memoize font-lock+ diff-hl dante flycheck cython-mode company-tern dash-functional tern company-statistics company-ghci company-ghc ghc haskell-mode company-cabal company-anaconda company coffee-mode cmm-mode clojure-snippets chruby bundler inf-ruby browse-at-remote auto-yasnippet auto-dictionary anaconda-mode pythonic ac-ispell auto-complete mmm-mode markdown-toc markdown-mode gh-md yaml-mode powerline parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra highlight seq spinner pkg-info epl bind-map bind-key packed helm avy helm-core popup async f s dash clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu cider queue clojure-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(tramp-syntax (quote default) nil (tramp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-keyword-face ((t :family "Script12 BT"))))
+ )
 )
