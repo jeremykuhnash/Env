@@ -1,0 +1,35 @@
+call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jpalardy/vim-slime'
+Plug 'junegunn/fzf.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+call plug#end()
+
+let mapleader = " "
+let maplocalleader = ","
+syntax on
+
+source ~/Env/vim/navigation.vim
+source ~/Env/vim/editing.vim
+
+" finding
+set path+=**
+set wildmenu
+set wildmode=longest,list,full
+set nohlsearch
+
+" undo history, etc
+set hidden
+set undofile
+set undodir=~/.vim/undo
+
+" slime
+let g:slime_target="tmux"
+" let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
+
+" colors
+highlight VertSplit guibg=#292929 guifg=#292929
+highlight StatusLine guibg=#292929 guifg=#292929
+highlight StatusLineNC guibg=#292929 guifg=#292929
