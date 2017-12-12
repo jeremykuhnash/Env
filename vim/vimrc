@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+Plug 'ajh17/Spacegray.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf.vim'
@@ -7,9 +8,15 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
+syntax on
+colorscheme spacegray
+highlight Normal ctermbg=2
+let g:spacegray_underline_search = 1
+let g:spacegray_low_contrast = 1
+hi Normal        ctermbg=235
+
 let mapleader = " "
 let maplocalleader = ","
-syntax on
 
 source ~/Env/vim/navigation.vim
 source ~/Env/vim/editing.vim
@@ -18,7 +25,6 @@ source ~/Env/vim/editing.vim
 set path+=**
 set wildmenu
 set wildmode=longest,list,full
-set nohlsearch
 
 " undo history, etc
 set hidden
@@ -28,8 +34,3 @@ set undodir=~/.vim/undo
 " slime
 let g:slime_target="tmux"
 " let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
-
-" colors
-highlight VertSplit guibg=#292929 guifg=#292929
-highlight StatusLine guibg=#292929 guifg=#292929
-highlight StatusLineNC guibg=#292929 guifg=#292929
