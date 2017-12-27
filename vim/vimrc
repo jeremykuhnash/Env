@@ -30,6 +30,7 @@ set wildmode=longest,list,full
 set hidden
 set undofile
 set undodir=~/.vim/undo
+set directory=$HOME/.vim/swapfiles//
 
 " slime
 let g:slime_target="tmux"
