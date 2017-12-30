@@ -116,6 +116,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias e="vim"
-export EDITOR="$e"
+export EDITOR="vim"
 alias :e="$e"
 alias dc=docker-compose

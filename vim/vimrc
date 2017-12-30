@@ -1,25 +1,27 @@
 call plug#begin('~/.vim/plugged')
-Plug 'ajh17/Spacegray.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'jpalardy/vim-slime'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-syntax on
-colorscheme spacegray
-highlight Normal ctermbg=2
-let g:spacegray_underline_search = 1
-let g:spacegray_low_contrast = 1
-hi Normal        ctermbg=235
+syntax off
 
 let mapleader = " "
 let maplocalleader = ","
 
 source ~/Env/vim/navigation.vim
-source ~/Env/vim/editing.vim
+
+set list
+set listchars=tab:>-,trail:+
+set hlsearch
+set noshowmatch
+let g:loaded_matchparen=1
+highlight Cursor guifg=green
+highlight clear CursorLine
+highlight CursorLine ctermbg=255
+set cursorline
+au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`'}
 
 " finding
 set path+=**
@@ -32,6 +34,3 @@ set undofile
 set undodir=~/.vim/undo
 set directory=$HOME/.vim/swapfiles//
 
-" slime
-let g:slime_target="tmux"
-" let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
