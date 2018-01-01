@@ -1,27 +1,60 @@
 call plug#begin('~/.vim/plugged')
+Plug 'matthias-margush/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'guns/xterm-color-table.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'wolverian/minimal'
 call plug#end()
 
-syntax off
-
+set mouse=a
+set termguicolors
+syntax on
 let mapleader = " "
 let maplocalleader = ","
 
-source ~/Env/vim/navigation.vim
+colorscheme minimal
+highlight Normal guibg=white
 
-set list
+source ~/code/Env/vim/navigation.vim
+
+set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \ 
+" ⁖
+set fillchars+=vert:╽,stl:╼,stlnc:\ 
+
 set listchars=tab:>-,trail:+
 set hlsearch
 set noshowmatch
 let g:loaded_matchparen=1
+
+highlight BufTabLineFill guifg=white guibg=white cterm=none
+highlight BufTabLineCurrent guifg=#F9F9F9 guibg=white gui=none cterm=none,underline
+highlight BufTabLineActive guifg=#F9F9F9 guibg=white gui=bold cterm=none,underline
+highlight BufTabLineHidden guifg=#F9F9F9 guibg=white gui=none cterm=none,underline
+
+highlight VertSplit guibg=lightgrey guifg=white
+highlight clear StatusLine
+highlight clear StatusLineNC
+highlight StatusLine guibg=white guifg=white cterm=none
+highlight StatusLineNC guibg=white guifg=white cterm=none
 highlight Cursor guifg=green
 highlight clear CursorLine
-highlight CursorLine ctermbg=255
+highlight CursorLine guibg=white guibg=#F9F9F9
+highlight NonText guifg=black
+highlight Visual guibg=#FFFFD0
+highlight Search guibg=#FFFFD0
 set cursorline
 au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`'}
+
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinLeave * set nocul
+augroup END
+
+set tabstop=4
+set shiftwidth=4
 
 " finding
 set path+=**
@@ -33,4 +66,3 @@ set hidden
 set undofile
 set undodir=~/.vim/undo
 set directory=$HOME/.vim/swapfiles//
-

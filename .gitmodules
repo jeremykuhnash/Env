@@ -52,3 +52,15 @@
 [submodule "config/nvim/pack/editing/start/vim-parinfer"]
 	path = config/nvim/pack/editing/start/vim-parinfer
 	url = git@github.com:bhurlow/vim-parinfer.git
+[submodule "config/nvim/pack/repl/iron.nvim"]
+	path = config/nvim/pack/repl/iron.nvim
+	url = https://github.com/hkupty/iron.nvim.git
+[submodule "config/nvim/pack/repl/start/iron.nvim"]
+	path = config/nvim/pack/repl/start/iron.nvim
+	url = https://github.com/hkupty/iron.nvim.git
+[submodule "vim/vim/pack/syntax/start/vim-polyglot"]
+	path = vim/vim/pack/syntax/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "vim/vim/pack/navigation/start/fzf.vim"]
+	path = vim/vim/pack/navigation/start/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git

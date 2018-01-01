@@ -1,5 +1,7 @@
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/Env/bin:$PATH"
-export XDG_CONFIG_HOME="$HOME/Env/config"
-export XDG_DATA_HOME="$HOME/Env/local/share"
-export XDG_CACHE_HOME="$HOME/Env/cache"
+export PATH="$HOME/code/Env/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/code/Env/config"
+export XDG_DATA_HOME="$HOME/code/Env/local/share"
+export XDG_CACHE_HOME="$HOME/code/Env/cache"
+export MANPATH=$MANPATH:/usr/local/opt/openssl/share/man
+export TERM=xterm-256color

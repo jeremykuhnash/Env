@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/Env/zsh/oh-my-zsh"
-export ZSH_CUSTOM="$HOME/Env/zsh"
+export ZSH="$HOME/code/Env/zsh/oh-my-zsh"
+export ZSH_CUSTOM="$HOME/code/Env/zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
+# SPACESHIP_PROMPT_SYMBOL='·٠•'
+SPACESHIP_PROMPT_SYMBOL='჻'
 SPACESHIP_TIME_SHOW=false
 SPACESHIP_EXEC_TIME_SHOW=false
 SPACESHIP_USER_SHOW=false
@@ -83,7 +85,16 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh cp man lein brew osx jira github tmux vi-mode docker docker-compose)
+plugins=(docker
+		 docker-compose
+		 git
+		 jira
+		 lein
+		 lol
+		 man
+		 vi-mode
+		 web-search
+		 zsh)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,5 +128,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias e="vim"
 export EDITOR="vim"
+export VISUAL="vim"
 alias :e="$e"
 alias dc=docker-compose
+set -o vi

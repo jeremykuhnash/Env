@@ -2,8 +2,6 @@ let mapleader = " "
 let maplocalleader = ","
 
 source ~/Env/config/nvim/navigation.vim
-source ~/Env/config/nvim/clojure.vim
-source ~/Env/config/nvim/git.vim
 source ~/Env/config/nvim/editing.vim
 autocmd VimEnter * source ~/Env/config/nvim/theme.vim
 
