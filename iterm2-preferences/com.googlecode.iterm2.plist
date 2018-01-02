@@ -31578,6 +31578,8 @@
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>EnableDivisionView</key>
+	<true/>
+	<key>EnableProxyIcon</key>
 	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
@@ -31630,7 +31632,7 @@
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Env/iterm2-preferences</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -31687,19 +31689,19 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 391 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 126 606 469 0 0 1440 877 </string>
+	<string>269 137 599 459 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>39 243 796 473 0 0 1440 877 </string>
+	<string>358 291 958 433 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>681 195 560 682 0 0 1440 877 </string>
+	<string>779 74 562 732 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 484 560 382 0 0 1440 877 </string>
+	<string>481 116 560 730 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>613 323 560 382 0 0 1440 877 </string>
+	<string>640 145 562 732 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>494 477 560 382 0 0 1440 877 </string>
+	<string>142 106 562 732 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>544 35 880 607 0 0 1440 877 </string>
+	<string>544 42 560 730 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_90F9793F-62C2-4285-87A8-DE0853520CFE</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_90F9793F-62C2-4285-87A8-DE0853520CFE_selection</key>
@@ -35609,6 +35611,10 @@
 	<string>D0B6A223-665E-4784-8671-DD7472335BE5</string>
 	<key>NoSyncLastTipTime</key>
 	<real>496728522.40787798</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -35640,6 +35646,8 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
+	<false/>
+	<key>OpenNoWindowsAtStartup</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
@@ -35681,7 +35689,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/matthias/Env/iterm2-preferences</string>
+	<string>/Users/matthias/code/Env/iterm2-preferences</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -35699,7 +35707,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-12-31T14:56:11Z</date>
+	<date>2018-01-02T02:26:02Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -35711,13 +35719,13 @@
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.40000000596046448</real>
+	<real>0.43427233573717949</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>6</integer>
 	<key>TabStyle</key>
-	<integer>3</integer>
+	<integer>1</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TerminalMargin</key>
@@ -35738,7 +35746,7 @@
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
-	<false/>
+	<true/>
 	<key>UseCompactLabel</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
