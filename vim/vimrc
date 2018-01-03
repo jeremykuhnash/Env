@@ -28,10 +28,10 @@ set hlsearch
 set noshowmatch
 let g:loaded_matchparen=1
 
-highlight BufTabLineFill guifg=white guibg=white cterm=none
-highlight BufTabLineCurrent guifg=#F9F9F9 guibg=white gui=none cterm=none,underline
-highlight BufTabLineActive guifg=#F9F9F9 guibg=white gui=bold cterm=none,underline
-highlight BufTabLineHidden guifg=#F9F9F9 guibg=white gui=none cterm=none,underline
+highlight TabLineFill guifg=white guibg=white cterm=none
+highlight TabLineSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
+highlight PmenuSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
+highlight TabLine guifg=#F9F9F9 guibg=white gui=none cterm=none,underline
 
 highlight VertSplit guibg=lightgrey guifg=white
 highlight clear StatusLine
