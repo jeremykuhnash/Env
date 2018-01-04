@@ -6,6 +6,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'wolverian/minimal'
+Plug 'vim-scripts/DrawIt'
 call plug#end()
 
 set mouse=a
