@@ -1,7 +1,5 @@
 call plug#begin('~/.vim/plugged')
-Plug 'matthias-margush/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'guns/xterm-color-table.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -28,11 +26,9 @@ set listchars=tab:>-,trail:+
 set hlsearch
 set noshowmatch
 let g:loaded_matchparen=1
+packadd! matchit
 
-highlight TabLineFill guifg=white guibg=white cterm=none
-highlight TabLineSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
-highlight PmenuSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
-highlight TabLine guifg=#F9F9F9 guibg=white gui=none cterm=none,underline
+source ~/code/Env/vim/tabline.vim
 
 highlight VertSplit guibg=lightgrey guifg=white
 highlight clear StatusLine
@@ -41,7 +37,7 @@ highlight StatusLine guibg=white guifg=white cterm=none
 highlight StatusLineNC guibg=white guifg=white cterm=none
 highlight Cursor guifg=green
 highlight clear CursorLine
-highlight CursorLine guibg=white guibg=#F9F9F9
+highlight CursorLine guibg=white guibg=#F7F7F7
 highlight NonText guifg=black
 highlight Visual guibg=#FFFFD0
 highlight Search guibg=#FFFFD0
