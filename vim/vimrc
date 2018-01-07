@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'wolverian/minimal'
 Plug 'vim-scripts/DrawIt'
 call plug#end()
@@ -16,11 +14,26 @@ let maplocalleader = ","
 colorscheme minimal
 highlight Normal guibg=white
 
-source ~/code/Env/vim/navigation.vim
-
 set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \ 
 " ⁖
 set fillchars+=vert:╽,stl:╼,stlnc:\ 
+
+" File tree
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+highlight netrwCompress term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwDir      term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwData	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black 
+highlight netrwHdr	    term=NONE cterm=NONE,italic gui=NONE guifg=black
+highlight netrwLex	    term=NONE cterm=NONE,italic gui=NONE guifg=black
+highlight netrwYacc	    term=NONE cterm=NONE,italic gui=NONE guifg=black
+highlight netrwLib	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwObj	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwTilde    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwTmp	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwTags	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwDoc	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+highlight netrwSymLink  term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
 
 set listchars=tab:>-,trail:+
 set hlsearch
@@ -63,3 +76,10 @@ set hidden
 set undofile
 set undodir=~/.vim/undo
 set directory=$HOME/.vim/swapfiles//
+
+" completion
+let g:cm_matcher = {'module': 'cm_matchers.substr_matcher', 'case': 'smartcase'}
+set shortmess+=c
+" tab key for completion
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
