@@ -78,8 +78,15 @@ set undodir=~/.vim/undo
 set directory=$HOME/.vim/swapfiles//
 
 " completion
-let g:cm_matcher = {'module': 'cm_matchers.substr_matcher', 'case': 'smartcase'}
+" set omnifunc=syntaxcomplete#Complete
+highlight Pmenu  term=NONE cterm=NONE gui=NONE guibg=#FFFFD0 guifg=#F8F8F8 
+highlight PmenuSel  term=NONE cterm=NONE gui=NONE,bold,underline guibg=#FFFFD0 guifg=black
+setlocal omnifunc=syntaxcomplete#Complete
+" see help ft-syntax-omni
+if has("autocmd") && exists("+omnifunc")
+	autocmd Filetype *
+				\	if &omnifunc == "" |
+				\		setlocal omnifunc=syntaxcomplete#Complete |
+				\	endif
+endif
 set shortmess+=c
-" tab key for completion
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
