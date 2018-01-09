@@ -127,9 +127,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias e="vim"
+
+function e() {
+	if [ $# -eq 0 ]; then
+		vim $(fzf)
+	else
+		vim $@
+	fi
+}
+
 export EDITOR="vim"
 export VISUAL="vim"
-alias :e="$e"
 alias dc=docker-compose
 set -o vi
