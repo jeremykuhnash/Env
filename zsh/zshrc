@@ -140,3 +140,6 @@ export EDITOR="vim"
 export VISUAL="vim"
 alias dc=docker-compose
 set -o vi
+
+export FZF_DEFAULT_OPTS='--color=light,fg:#000000,bg+:#FFFFFF,pointer:#FFFFFF,prompt:#FFFF00 --height=10 --border --reverse --prompt=჻\ '
+export FZF_DEFAULT_COMMAND='rg --files'
