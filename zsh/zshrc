@@ -128,16 +128,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-function e() {
-	if [ $# -eq 0 ]; then
-		vim $(fzf)
-	else
-		vim $@
-	fi
-}
-
 export EDITOR="vim"
 export VISUAL="vim"
+alias e=vim
 alias dc=docker-compose
 set -o vi
 

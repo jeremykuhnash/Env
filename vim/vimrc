@@ -1,44 +1,64 @@
 call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'ajh17/VimCompletesMe'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
-Plug 'wolverian/minimal'
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/DrawIt'
+Plug 'wolverian/minimal'
 call plug#end()
 
 set mouse=a
 set termguicolors
 syntax on
-let mapleader = " "
-let maplocalleader = ","
+set esckeys
+let mapleader=' '
+let maplocalleader=','
 
 colorscheme minimal
 highlight Normal guibg=white
 
-set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \ 
+" What horizontal and vertical splits look like
 " ⁖
+set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \ 
 set fillchars+=vert:╽,stl:╼,stlnc:\ 
 
 " Searching
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:c:%m
-" nnoremap \\ :silent grep 
+nnoremap <silent> <leader>pf :FZF<cr>
+nnoremap <silent> <leader>/ :Ag<cr>
+nnoremap <silent> <leader>bb :Buffers<cr>
+nnoremap <silent> <leader>bn :bn<cr>
+nnoremap <silent> <leader>bp :bp<cr>
+let g:fzf_layout = { 'down': '15' }
+let g:fzf_buffers_jump = 1
+let g:fzf_tags_command = 'ctags -R .'
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " File tree
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-highlight netrwCompress term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwDir      term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwData	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black 
-highlight netrwHdr	    term=NONE cterm=NONE,italic gui=NONE guifg=black
-highlight netrwLex	    term=NONE cterm=NONE,italic gui=NONE guifg=black
-highlight netrwYacc	    term=NONE cterm=NONE,italic gui=NONE guifg=black
-highlight netrwLib	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwObj	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwTilde    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwTmp	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwTags	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwDoc	    term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
-highlight netrwSymLink  term=NONE cterm=NONE gui=NONE ctermfg=black guifg=black
+nnoremap <silent> <leader>pt :NERDTreeToggle<cr>
+let g:NERDTreeDirArrowExpandable = '჻'
+let g:NERDTreeDirArrowCollapsible = '⁖'
+highlight Directory gui=NONE ctermfg=black guifg=black
+
+" Quickfix
+highlight qfFileName gui=NONE,bold guifg=black
 
 set listchars=tab:>-,trail:+
 set hlsearch
@@ -83,15 +103,21 @@ set undodir=~/.vim/undo
 set directory=$HOME/.vim/swapfiles//
 
 " completion
-" set omnifunc=syntaxcomplete#Complete
-highlight Pmenu  term=NONE cterm=NONE gui=NONE guibg=#FFFFD0 guifg=#F8F8F8 
-highlight PmenuSel  term=NONE cterm=NONE gui=NONE,bold,underline guibg=#FFFFD0 guifg=black
-setlocal omnifunc=syntaxcomplete#Complete
-" see help ft-syntax-omni
-if has("autocmd") && exists("+omnifunc")
-	autocmd Filetype *
-				\	if &omnifunc == "" |
-				\		setlocal omnifunc=syntaxcomplete#Complete |
-				\	endif
-endif
-set shortmess+=c
+highlight Pmenu  term=NONE cterm=NONE gui=NONE guibg=#F7F7F7 guifg=#F8F8F8 
+highlight PmenuSel  term=NONE cterm=NONE gui=NONE,bold,underline guibg=#F7F7F7 guifg=black
+set completeopt=menu,noinsert,noselect
+set ignorecase
+set smartcase
+set infercase
+set shortmess+=cI
+
+" Go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_structs = 1 
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+autocmd FileType go nnoremap <buffer><silent><localleader>t :GoTest<cr>
+autocmd FileType go nnoremap <buffer><silent><localleader>b :GoBuild<cr>
+
