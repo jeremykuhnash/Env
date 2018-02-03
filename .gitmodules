@@ -10,30 +10,12 @@
 [submodule "config/nvim/pack/clojure/start/vim-fireplace"]
 	path = config/nvim/pack/clojure/opt/vim-fireplace
 	url = git@github.com:tpope/vim-fireplace.git
-[submodule "config/nvim/pack/syntax/start/vim-polyglot"]
-	path = config/nvim/pack/syntax/start/vim-polyglot
-	url = git@github.com:sheerun/vim-polyglot.git
-[submodule "config/nvim/pack/themes/opt/onedark.vim"]
-	path = config/nvim/pack/themes/opt/onedark.vim
-	url = git@github.com:joshdick/onedark.vim.git
 [submodule "Office-Code-Pro"]
 	path = Office-Code-Pro
 	url = git@github.com:nathco/Office-Code-Pro.git
-[submodule "config/nvim/pack/navigation/start/nerdtree"]
-	path = config/nvim/pack/navigation/start/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "config/nvim/pack/navigation/start/fzf.vim"]
-	path = config/nvim/pack/navigation/start/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
 [submodule "config/nvim/pack/clojure/opt/async-clj-omni"]
 	path = config/nvim/pack/clojure/opt/async-clj-omni
 	url = git@github.com:clojure-vim/async-clj-omni.git
-[submodule "config/nvim/pack/navigation/start/nvim-completion-manager"]
-	path = config/nvim/pack/navigation/start/nvim-completion-manager
-	url = git@github.com:roxma/nvim-completion-manager.git
-[submodule "config/nvim/pack/editing/start/vim-better-whitespace"]
-	path = config/nvim/pack/editing/start/vim-better-whitespace
-	url = git@github.com:ntpeters/vim-better-whitespace.git
 [submodule "config/nvim/pack/editing/start/vim-repeat"]
 	path = config/nvim/pack/editing/start/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
@@ -49,9 +31,6 @@
 [submodule "config/nvim/pack/nvim-hosts/start/node-host"]
 	path = config/nvim/pack/nvim-hosts/start/node-host
 	url = git@github.com:neovim/node-host.git
-[submodule "config/nvim/pack/editing/start/vim-parinfer"]
-	path = config/nvim/pack/editing/start/vim-parinfer
-	url = git@github.com:bhurlow/vim-parinfer.git
 [submodule "config/nvim/pack/repl/iron.nvim"]
 	path = config/nvim/pack/repl/iron.nvim
 	url = https://github.com/hkupty/iron.nvim.git

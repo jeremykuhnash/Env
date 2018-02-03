@@ -13,7 +13,7 @@ call plug#end()
 set mouse=a
 set termguicolors
 syntax on
-set esckeys
+" set esckeys
 let mapleader=' '
 let maplocalleader=','
 
