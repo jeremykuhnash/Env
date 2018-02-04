@@ -1,5 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
-"Plug 'roxma/python-support.nvim'
+" Plug 'roxma/python-support.nvim'
 Plug '/usr/local/opt/fzf'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'clojure-vim/async-clj-omni'
@@ -26,9 +26,9 @@ highlight Normal guibg=white
 
 " What horizontal and vertical splits look like
 " ⁖
-set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \ 
-" set fillchars+=vert:╽,stl:╼,stlnc:\ 
-set fillchars+=vert:╽,stlnc:\ 
+set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \
+" set fillchars+=vert:╽,stl:╼,stlnc:\
+set fillchars+=vert:╽,stlnc:\
 
 " Searching
 set grepprg=rg\ --vimgrep
@@ -107,7 +107,7 @@ set undodir=~/.vim/undo
 set directory=$HOME/.vim/swapfiles//
 
 " completion
-highlight Pmenu  term=NONE cterm=NONE gui=NONE guibg=#F7F7F7 guifg=#F8F8F8 
+highlight Pmenu  term=NONE cterm=NONE gui=NONE guibg=#F7F7F7 guifg=#F8F8F8
 highlight PmenuSel  term=NONE cterm=NONE gui=NONE,bold,underline guibg=#F7F7F7 guifg=black
 set completeopt=menu,noinsert,noselect
 set ignorecase
@@ -117,7 +117,7 @@ set shortmess+=cI
 
 " Go
 let g:go_fmt_command = "goimports"
-let g:go_highlight_structs = 1 
+let g:go_highlight_structs = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1

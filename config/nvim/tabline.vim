@@ -32,7 +32,7 @@ endfunction
 set tabline=%!MyTabLine()
 set showtabline=2 " always
 let g:tablineclosebutton=0
-highlight TabLineFill guifg=white guibg=white cterm=none
-highlight TabLineSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
-highlight PmenuSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
-highlight TabLine guifg=#F9F9F9 guibg=white gui=none cterm=none
+" highlight TabLineFill guifg=white guibg=white cterm=none
+" highlight TabLineSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
+" highlight PmenuSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline
+" highlight TabLine guifg=#F9F9F9 guibg=white gui=none cterm=none
