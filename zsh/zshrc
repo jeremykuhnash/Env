@@ -134,6 +134,6 @@ alias e=nvim
 alias dc=docker-compose
 set -o vi
 
-export FZF_DEFAULT_OPTS='--color=light,fg:#000000,bg+:#FFFFFF,pointer:#FFFFFF,prompt:#FFFF00 --height=10 --border --reverse --prompt=჻\ '
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_OPTS='--color=light,fg:#FFFFFF,bg+:#2E3440,bg:#2E3440,pointer:#C1A1BB,info:#C1A1BB,hl+:#C1A1BB,hl:#C1A1BB,fg+:#FFFFFF,prompt:#FFFFFF --height=10 --border --reverse --prompt=჻\ '
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 source ~/.fzf.zsh

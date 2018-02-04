@@ -10,6 +10,10 @@ function! MyTabLine()
 	let s = ''
 	for i in range(tabpagenr('$'))
 		" select the highlighting
+		if 0 == i
+			let s .= '    '
+		endif
+
 		if i + 1 == tabpagenr()
 			let s .= '჻ %#TabLineSel#'
 		else
@@ -32,7 +36,7 @@ endfunction
 set tabline=%!MyTabLine()
 set showtabline=2 " always
 let g:tablineclosebutton=0
-highlight TabLineFill guifg=white guibg=black
-highlight TabLineSel guifg=#444444 guibg=white gui=none
-highlight PmenuSel guifg=#F9F9F9 guibg=white gui=none cterm=bold,underline ctermbg=white ctermfg=black
-highlight TabLine guifg=#F9F9F9 guibg=white gui=none cterm=none ctermbg=white ctermfg=black
+highlight TabLineFill guifg=#C1A1BB guibg=#2E3440
+highlight TabLineSel guifg=#C1A1BB guibg=#2E3440 gui=none
+highlight PmenuSel guifg=#C1A1BB guibg=#2E3440 gui=none
+highlight TabLine guifg=#C1A1BB guibg=#2E3440 gui=none
