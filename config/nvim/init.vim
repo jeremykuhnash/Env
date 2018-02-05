@@ -7,21 +7,53 @@ Plug 'clojure-vim/async-clj-omni'
 Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'qpkorr/vim-bufkill'
+Plug 'romainl/vim-cool'
 Plug 'roxma/nvim-completion-manager'
 Plug 'scrooloose/nerdtree'
+Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/DrawIt'
+Plug 'vim-scripts/LargeFile'
 Plug 'vimlab/split-term.vim'
 call plug#end()
 
-let g:better_whitespace_filetypes_blacklist=['vim', 'diff', 'gitcommit', 'unite', 'qf', 'help', 'markdown']
 let g:airline#extensions#whitespace#enabled=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+set autoread
+set noswapfile
+set inccommand=nosplit
+" autocmd VimEnter * Limelight
+autocmd VimEnter * Goyo
+autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+function! s:goyo_enter()
+  silent !tmux set status off
+  set foldcolumn=0
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  set foldcolumn=4
+  source ~/code/Env/vim/tabline.vim
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
@@ -32,7 +64,7 @@ inoremap <C-j> <C-\><C-N><C-w>j
 inoremap <C-k> <C-\><C-N><C-w>k
 inoremap <C-l> <C-\><C-N><C-w>l
 
-"autocmd BufEnter * EnableStripWhitespaceOnSave
+autocmd BufEnter * EnableStripWhitespaceOnSave
 set mouse=a
 set noshowmode
 set termguicolors
@@ -43,11 +75,6 @@ let maplocalleader=','
 let g:nord_comment_brightness = 12
 colorscheme nord
 let g:airline_theme='base16'
-
-" What horizontal and vertical splits look like
-" set statusline=%=\ \ \ \ \ ჻\ %f\ \ \ \ \ \ \ \ 
-" set fillchars+=vert:╽,stl:╼,stlnc:\ 
-" set fillchars+=vert:╽,stlnc:\ ,stl:-
 
 " set number
 set numberwidth=1
@@ -67,6 +94,8 @@ nnoremap <silent> <leader>bn :bn<cr>
 nnoremap <silent> <leader>bp :bp<cr>
 nnoremap <silent> <leader>bd :BD<cr>
 nnoremap <silent> <leader>gs :Gstatus<cr>
+nnoremap <silent> <leader>df :Goyo<cr>
+nnoremap <silent> <leader>dl :Limelight!!<cr>
 let g:fzf_layout = { 'down': '15' }
 let g:fzf_buffers_jump = 1
 let g:fzf_tags_command = 'ctags -R .'
@@ -86,41 +115,22 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " File tree
-nnoremap <silent> <leader>pt :NERDTreeToggle<cr>
+nnoremap <silent> <leader>pt :Goyo!\|NERDTreeToggle<cr>
+nnoremap <silent> <leader>wj :wincmdj<cr>
+nnoremap <silent> <leader>wh :wincmd h<cr>
+nnoremap <silent> <leader>wj :wincmd j<cr>
+nnoremap <silent> <leader>wk :wincmd k<cr>
+nnoremap <silent> <leader>ww :wincmd w<cr>
+nnoremap <silent> <leader>w= execute "normal \<c-w>="
 let g:NERDTreeDirArrowExpandable = '჻'
 let g:NERDTreeDirArrowCollapsible = '⁖'
-" highlight Directory gui=NONE ctermfg=black guifg=black
-
-" Quickfix
-" highlight qfFileName gui=NONE,bold guifg=black
 
 set listchars=tab:>-,trail:+
 set hlsearch
 set noshowmatch
 let g:loaded_matchparen=1
-" let g:airline_extensions = ['branch']
 
-source ~/code/Env/vim/tabline.vim
-
-" highlight VertSplit guibg=lightgrey guifg=white
-" highlight clear StatusLine
-" highlight clear StatusLineNC
-" highlight StatusLine guibg=#2E3440 guifg=white cterm=none
-" highlight StatusLineNC guibg=#2E3440 guifg=white cterm=none
-" highlight Cursor guifg=green
-" highlight clear CursorLine
-" highlight CursorLine guibg=white guibg=#F7F7F7
-" highlight NonText guifg=black
-" highlight Visual guibg=#FFFFD0
-" highlight Search guibg=#FFFFD0
-set nocursorline
 au Filetype clojure let b:AutoPairs = {'(':')', '[':']', '{':'}','"':'"', '`':'`'}
-
-" augroup BgHighlight
-"     autocmd!
-"     autocmd WinEnter * set cul
-"     autocmd WinLeave * set nocul
-" augroup END
 
 set tabstop=4
 set shiftwidth=4
@@ -142,6 +152,8 @@ set ignorecase
 set smartcase
 set infercase
 set shortmess+=cI
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Go
 let g:go_fmt_command = "goimports"
@@ -152,3 +164,5 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 autocmd FileType go nnoremap <buffer><silent><localleader>t :GoTest<cr>
 autocmd FileType go nnoremap <buffer><silent><localleader>b :GoBuild<cr>
+
+source ~/code/Env/vim/tabline.vim
