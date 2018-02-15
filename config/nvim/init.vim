@@ -1,6 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'roxma/python-support.nvim'
 Plug '/usr/local/opt/fzf'
+Plug 'AndrewRadev/ginitpull.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'clojure-vim/async-clj-omni'
@@ -17,8 +18,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-dispatch'
+Plug '/Users/matthias.margush/code/vim-fireplace'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/DrawIt'
@@ -32,8 +35,10 @@ set autoread
 set noswapfile
 set inccommand=nosplit
 " autocmd VimEnter * Limelight
-autocmd VimEnter * Goyo
+" autocmd VimEnter * Goyo
 autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
+let g:goyo_width=100
+let g:goyo_height="90%"
 
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
